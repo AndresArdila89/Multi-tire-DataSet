@@ -56,7 +56,41 @@ namespace Programing_DataSet
             dtStudents.Columns.Add("LastName", System.Type.GetType("System.String"));
             dtStudents.PrimaryKey = new DataColumn[] { dtStudents.Columns["StudentId"]};
 
+            foreach (DataColumn dc in dtStudents.Columns)
+            {
+                Console.WriteLine("Column Name : " + dc.ColumnName + "Data Type : " + dc.DataType);
+            }
 
+
+            //Q7:
+
+
+            DataRow dr1 = dtStudents.NewRow();
+            dr1["StudentId"] = 1111111;
+            dr1["FirstName"] = "John";
+            dr1["LastName"] = "Abbot";
+            dtStudents.Rows.Add(dr1);
+
+            DataRow dr2 = dtStudents.NewRow();
+            dr2["StudentId"] = 2222222;
+            dr2["FirstName"] = "John";
+            dr2["LastName"] = "Abbot";
+            dtStudents.Rows.Add(dr2);
+
+            DataRow dr3 = dtStudents.NewRow();
+            dr3["StudentId"] = 33333333;
+            dr3["FirstName"] = "John";
+            dr3["LastName"] = "Abbot";
+            dtStudents.Rows.Add(dr3);
+
+
+            // write a code to display the students info 
+            foreach (DataRow dr in dtStudents.Rows)
+            {
+                Console.WriteLine(dr["StudentId"] + " " + dr["FirstName"] + " " + dr["LastName"]);
+            }
+
+            //how to remove a row 
         }
     }
 }
