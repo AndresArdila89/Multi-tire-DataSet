@@ -1,0 +1,7 @@
+C:\Users\andre\OneDrive\Desktop\3rd semester\Multi-tire Applications\Programming_with_DataSet\Programing_DataSet\bin\Debug\Programing_DataSet.exe.config
+C:\Users\andre\OneDrive\Desktop\3rd semester\Multi-tire Applications\Programming_with_DataSet\Programing_DataSet\bin\Debug\Programing_DataSet.exe
+C:\Users\andre\OneDrive\Desktop\3rd semester\Multi-tire Applications\Programming_with_DataSet\Programing_DataSet\bin\Debug\Programing_DataSet.pdb
+C:\Users\andre\OneDrive\Desktop\3rd semester\Multi-tire Applications\Programming_with_DataSet\Programing_DataSet\obj\Debug\Programing_DataSet.csprojAssemblyReference.cache
+C:\Users\andre\OneDrive\Desktop\3rd semester\Multi-tire Applications\Programming_with_DataSet\Programing_DataSet\obj\Debug\Programing_DataSet.csproj.CoreCompileInputs.cache
+C:\Users\andre\OneDrive\Desktop\3rd semester\Multi-tire Applications\Programming_with_DataSet\Programing_DataSet\obj\Debug\Programing_DataSet.exe
+C:\Users\andre\OneDrive\Desktop\3rd semester\Multi-tire Applications\Programming_with_DataSet\Programing_DataSet\obj\Debug\Programing_DataSet.pdb
