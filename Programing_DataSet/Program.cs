@@ -155,15 +155,64 @@ namespace Programing_DataSet
 
             //Q10: define DataColumn for StudentCourses PK = StudentId CourseCode 
 
-            dtStudentCourses.Columns.Add("StudentId", System.Type.GetType("Systen.Int32"));
-            dtStudentCourses.Columns.Add("CourseCode", System.Type.GetType("System.Int32"));
+            dtStudentCourses.Columns.Add("StudentId", System.Type.GetType("System.Int32"));
+            dtStudentCourses.Columns.Add("CourseCode", System.Type.GetType("System.String"));
 
             dtStudentCourses.PrimaryKey = new DataColumn[] { dtStudentCourses.Columns["StudentId"], dtStudentCourses.Columns["CourseCode"] };
 
+            foreach (Constraint dc in dtStudentCourses.Constraints)
+            {
+                Console.WriteLine(dc);
+            }
 
 
+            //Q11: Populate StudentCourses with data 
+
+            DataRow drStudentCourses1 = dtStudentCourses.NewRow();
+            drStudentCourses1["StudentId"] = 1111111;
+            drStudentCourses1["CourseCode"] = "420-P16-AS";
+
+            dtStudentCourses.Rows.Add(drStudentCourses1);
 
 
+            DataRow drStudentCourses2 = dtStudentCourses.NewRow();
+            drStudentCourses2["StudentId"] = 2222222;
+            drStudentCourses2["CourseCode"] = "420-P16-AS";
+
+            dtStudentCourses.Rows.Add(drStudentCourses2);
+
+
+            DataRow drStudentCourses3 = dtStudentCourses.NewRow();
+            drStudentCourses3["StudentId"] = 1111111;
+            drStudentCourses3["CourseCode"] = "420-P25-AS";
+
+            dtStudentCourses.Rows.Add(drStudentCourses3);
+
+
+            DataRow drStudentCourses4 = dtStudentCourses.NewRow();
+            drStudentCourses4["StudentId"] = 2222222;
+            drStudentCourses4["CourseCode"] = "420-P25-AS";
+
+            dtStudentCourses.Rows.Add(drStudentCourses4);
+
+            DataRow drStudentCourses5 = dtStudentCourses.NewRow();
+            drStudentCourses5["StudentId"] = 3333333;
+            drStudentCourses5["CourseCode"] = "420-P34-AS";
+
+            dtStudentCourses.Rows.Add(drStudentCourses5);
+
+            DataRow drStudentCourses6 = dtStudentCourses.NewRow();
+            drStudentCourses6["StudentId"] = 3333333;
+            drStudentCourses6["CourseCode"] = "420-P55-AS";
+
+            dtStudentCourses.Rows.Add(drStudentCourses6);
+
+            // Display table content
+            foreach (DataRow dr in dtStudentCourses.Rows)
+            {
+                Console.WriteLine(dr["StudentId"] + " " + dr["CourseCode"] );
+            }
+ 
         }
     }
 }
