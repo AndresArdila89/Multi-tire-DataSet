@@ -73,14 +73,14 @@ namespace Programing_DataSet
 
             DataRow dr2 = dtStudents.NewRow();
             dr2["StudentId"] = 2222222;
-            dr2["FirstName"] = "John";
-            dr2["LastName"] = "Abbot";
+            dr2["FirstName"] = "Mary";
+            dr2["LastName"] = "Green";
             dtStudents.Rows.Add(dr2);
 
             DataRow dr3 = dtStudents.NewRow();
             dr3["StudentId"] = 33333333;
-            dr3["FirstName"] = "John";
-            dr3["LastName"] = "Abbot";
+            dr3["FirstName"] = "Thomas";
+            dr3["LastName"] = "Moore";
             dtStudents.Rows.Add(dr3);
 
 
@@ -90,7 +90,80 @@ namespace Programing_DataSet
                 Console.WriteLine(dr["StudentId"] + " " + dr["FirstName"] + " " + dr["LastName"]);
             }
 
-            //how to remove a row 
+            //how to remove a row
+
+
+            //Q8: DataTable object Courses, name the DataColumn objects as CourseCode, CourseTitle and TotalHour
+            dtCourses.Columns.Add("CourseCode", System.Type.GetType("System.String"));
+            dtCourses.Columns.Add("CourseTitle", System.Type.GetType("System.String"));
+            dtCourses.Columns.Add("TotalHours", System.Type.GetType("System.Int32"));
+            dtCourses.PrimaryKey = new DataColumn[] { dtCourses.Columns["CourseCode"] };
+
+            //Display column name and type
+
+            foreach (DataColumn dc in dtCourses.Columns)
+            {
+                Console.WriteLine("Column Name : " + dc.ColumnName + "Data Type : " + dc.DataType);
+            }
+
+
+
+            //Q9:Populate the table with the given information 
+
+            DataRow drCourses1 = dtCourses.NewRow();
+            drCourses1["CourseCode"] = "420-P16-AS";
+            drCourses1["CourseTitle"] = "Structured Programming";
+            drCourses1["TotalHours"] = 90;
+            
+            dtCourses.Rows.Add(drCourses1);
+
+            DataRow drCourses2 = dtCourses.NewRow();
+            drCourses2["CourseCode"] = "420-P25-AS";
+            drCourses2["CourseTitle"] = "Introduction to Object Oriented Programming";
+            drCourses2["TotalHours"] = 75;
+
+            dtCourses.Rows.Add(drCourses2);
+
+            DataRow drCourses3 = dtCourses.NewRow();
+            drCourses3["CourseCode"] = "420-P34-AS";
+            drCourses3["CourseTitle"] = "Advanced Object Programming";
+            drCourses3["TotalHours"] = 60;
+
+            dtCourses.Rows.Add(drCourses3);
+
+            DataRow drCourses4 = dtCourses.NewRow();
+            drCourses4["CourseCode"] = "420-P46-AS";
+            drCourses4["CourseTitle"] = "Event Programming";
+            drCourses4["TotalHours"] = 90;
+
+            dtCourses.Rows.Add(drCourses4);
+
+            DataRow drCourses5 = dtCourses.NewRow();
+            drCourses5["CourseCode"] = "420-P55-AS";
+            drCourses5["CourseTitle"] = "Internet Programming";
+            drCourses5["TotalHours"] = 75;
+
+            dtCourses.Rows.Add(drCourses5);
+
+
+            // Display table content
+            foreach (DataRow dr in dtCourses.Rows)
+            {
+                Console.WriteLine(dr["CourseCode"] + " " + dr["CourseTitle"] + " " + dr["TotalHours"]);
+            }
+
+
+            //Q10: define DataColumn for StudentCourses PK = StudentId CourseCode 
+
+            dtStudentCourses.Columns.Add("StudentId", System.Type.GetType("Systen.Int32"));
+            dtStudentCourses.Columns.Add("CourseCode", System.Type.GetType("System.Int32"));
+
+            dtStudentCourses.PrimaryKey = new DataColumn[] { dtStudentCourses.Columns["StudentId"], dtStudentCourses.Columns["CourseCode"] };
+
+
+
+
+
         }
     }
 }
