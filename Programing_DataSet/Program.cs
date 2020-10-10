@@ -38,7 +38,7 @@ namespace Programing_DataSet
             dsCollege.Tables.Add(dtStudentCourses);
 
             //Q5
-            Console.WriteLine("number of dataTables :" , dsCollege.Tables.Count);
+            Console.WriteLine("number of dataTables :", dsCollege.Tables.Count);
             Console.WriteLine("number of dataTables :", dtCourses.TableName);
             Console.WriteLine("number of dataTables :", dtStudents.TableName);
             Console.WriteLine("number of dataTables :", dtStudentCourses.TableName);
@@ -51,10 +51,10 @@ namespace Programing_DataSet
 
             //Q6:
 
-            dtStudents.Columns.Add("StudentId", typeof(Int32));
+            dtStudents.Columns.Add("StudentId", System.Type.GetType("System.Int32"));
             dtStudents.Columns.Add("FirstName", System.Type.GetType("System.String"));
             dtStudents.Columns.Add("LastName", System.Type.GetType("System.String"));
-            dtStudents.PrimaryKey = new DataColumn[] { dtStudents.Columns["StudentId"]};
+            dtStudents.PrimaryKey = new DataColumn[] { dtStudents.Columns["StudentId"] };
 
             foreach (DataColumn dc in dtStudents.Columns)
             {
@@ -78,7 +78,7 @@ namespace Programing_DataSet
             dtStudents.Rows.Add(dr2);
 
             DataRow dr3 = dtStudents.NewRow();
-            dr3["StudentId"] = 33333333;
+            dr3["StudentId"] = 3333333;
             dr3["FirstName"] = "Thomas";
             dr3["LastName"] = "Moore";
             dtStudents.Rows.Add(dr3);
@@ -114,7 +114,7 @@ namespace Programing_DataSet
             drCourses1["CourseCode"] = "420-P16-AS";
             drCourses1["CourseTitle"] = "Structured Programming";
             drCourses1["TotalHours"] = 90;
-            
+
             dtCourses.Rows.Add(drCourses1);
 
             DataRow drCourses2 = dtCourses.NewRow();
@@ -210,9 +210,53 @@ namespace Programing_DataSet
             // Display table content
             foreach (DataRow dr in dtStudentCourses.Rows)
             {
-                Console.WriteLine(dr["StudentId"] + " " + dr["CourseCode"] );
+                Console.WriteLine(dr["StudentId"] + " " + dr["CourseCode"]);
             }
- 
+
+
+            //Q12: 
+
+
+
+            //Create a relation between dtStudent(Parent) PrimaryKey: StudentId, dtStudentCours(child) ForeignKey:StudentId
+
+            DataColumn stdParentColumn = dsCollege.Tables["Students"].Columns["StudentId"];
+            DataColumn stdChildColumn = dsCollege.Tables["StudentCourses"].Columns["StudentId"];
+            DataRelation stdRelation = new System.Data.DataRelation("StudentIdRelation", stdParentColumn, stdChildColumn);
+            dsCollege.Relations.Add(stdRelation);
+            Console.WriteLine("relation created: ", stdRelation.RelationName);
+
+            //Create a relation between dtStudent(Parent) PrimaryKey: CourseId, dtStudentCours(child) ForeignKey:StudentId
+
+            DataColumn crsParentColumn = dsCollege.Tables["Courses"].Columns["CourseCode"];
+            DataColumn crsChildColumn = dsCollege.Tables["StudentCourses"].Columns["CourseCode"];
+            DataRelation crsRelation = new System.Data.DataRelation("CourseCodeRelation", crsParentColumn, crsChildColumn);
+            dsCollege.Relations.Add(crsRelation);
+            Console.WriteLine("relation created: ", crsRelation.RelationName);
+
+            string studentNameSearch = "Thomas";
+            
+            foreach (DataRow dr in dtStudents.Rows)
+            {
+                if (dr["FirstName"].ToString() == studentNameSearch)
+                {
+                    DataRow[] search = dr.GetChildRows(stdRelation);
+                    foreach (DataRow drr in search)
+                    {
+                        Console.WriteLine(drr["StudentId"] + " " + drr["CourseCode"]);
+                    }
+                    break;
+                }
+            }
+
+
+
+            
+
+            
+
+      
+
         }
     }
 }
